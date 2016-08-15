@@ -21,12 +21,13 @@ public class Jarros {
         int qnt= 4; //quantidade que deseja ao final do jogo
         int jarroSel; //jarro selecionado para ação
         String acao; //armazena a acao selecionada
+        int custo=0; //armazena o custo total (passos) para chegar até o estado atual
         System.out.println("Bem vindo ao jogo dos jarros");                
         System.out.println("Junte "+ qnt+" litros de agua em um dos jarros");                
         
         jarro jarro1 = new jarro(5,0); //cria o jarro 1 com (volume máximo, volume de água inicial)
         jarro jarro2 = new jarro(3,0);//cria o jarro 2 com (volume máximo, volume de água inicial)
-                
+        estado estado0= new estado(0,0,0);        
         System.out.println("o jarro 1 tem o volume total de:"+ jarro1.capacidade + " Litros");
         System.out.println("o jarro 2 tem o volume total de:"+ jarro2.capacidade+ " Litros");
         
@@ -35,6 +36,7 @@ public class Jarros {
         
         
         while (jarro1.agua!=qnt && jarro2.agua!=qnt){ //enquanto não atingir a quantidade de água desejada:
+            System.out.println("estado: ("+estado0.x+","+estado0.y+")");
             System.out.println("Qual jarro você deseja selecionar (1/2):");
             jarroSel=ler.nextInt(); //lê o jarro selecionado para a jogada
             //se selecionar jarro 1
@@ -72,7 +74,12 @@ public class Jarros {
             //mostra na tela o estado atual dos jarros
             System.out.println("o jarro 1 tem o volume de água:"+ jarro1.agua+ " Litros (capacidade: "+jarro1.capacidade+")");
             System.out.println("o jarro 2 tem o volume de água:"+ jarro2.agua+ " Litros (capacidade: "+jarro2.capacidade+")");
-            
+            custo++;
+            System.out.println("Quantidade de passos: "+custo);
+            estado0.x=jarro1.agua;
+            estado0.y=jarro2.agua;
+            estado0.custo=estado0.validaEstado();
+            System.out.println("Custo do estado atual: "+estado0.custo);
         }
         //se conseguir a quantidade desejada
         System.out.println("\n\n");
