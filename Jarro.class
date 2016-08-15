@@ -10,10 +10,13 @@ package jarros;
  * @author levi
  */
 public class jarro {
-    
+    //atributos do jarro:
     public int capacidade;
     public int agua;
-    public void trocar(jarro oJarro){
+    
+    //métodos do jarro:
+    
+    public void trocar(jarro oJarro){//colocar o máximo possível de água no outro jarro sem derramar
         int maxTrocado;        
         maxTrocado=oJarro.capacidade-oJarro.agua;    
         if (this.agua>0){
@@ -26,14 +29,14 @@ public class jarro {
             }
         }
     }
-    public  jarro(int cap, int agua){
+    public  jarro(int cap, int agua){//construtor
         this.capacidade=cap;
         this.agua=agua;
     }
-    public void encher(){
+    public void encher(){//enche o jarro com água até a capacidade máxima 
         this.agua=this.capacidade;
     }
-    public void esvaziar(){
+    public void esvaziar(){//esvazia o jarro
         this.agua=0;
     }
 }
